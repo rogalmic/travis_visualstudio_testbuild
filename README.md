@@ -1,0 +1,3 @@
+# Test project
+
+Checking travis capability to build standalone WPF app with installer...
