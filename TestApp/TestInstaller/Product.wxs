@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-	<Product Id="*" Name="TestInstaller" Language="1033" Version="1.0.0.0" Manufacturer="Test" UpgradeCode="e35a88ae-5898-49be-bbe8-f97e9689dd42">
+	<Product Id="*" Name="TestInstaller" Language="1033" Version="1.0.0.0" Manufacturer="TestDev" UpgradeCode="e35a88ae-5898-49be-bbe8-f97e9689dd42">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+		<MediaTemplate EmbedCab="yes" />
 
 		<Feature Id="ProductFeature" Title="TestInstaller" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
@@ -20,11 +20,11 @@
 	</Fragment>
 
 	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+		<ComponentGroup Id="ProductComponents" >
 			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
-			<!-- <Component Id="ProductComponent"> -->
-				<!-- TODO: Insert files, registry keys, and other resources here. -->
-			<!-- </Component> -->
+			 <Component Id="ProductComponent" Guid="AAF44C76-F867-4433-B9DF-7F36C05BD264" Directory="INSTALLFOLDER">
+         <File Id="TestApp.exe" Name="TestApp.exe" DiskId="1" Source="$(var.SolutionDir)TestApp\bin\$(var.Configuration)\TestApp.exe" Vital="yes"/>
+			 </Component>
 		</ComponentGroup>
 	</Fragment>
 </Wix>
