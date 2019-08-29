@@ -1,0 +1,7 @@
+language: csharp
+
+os: windows
+group: dev
+
+script:
+  - msbuild TestApp/TestApp.sln
