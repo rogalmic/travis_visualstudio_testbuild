@@ -1,7 +1,19 @@
-language: csharp
+language: cpp
 
 os: windows
 group: dev
 
+env:
+  - MSBUILD_PATH: "'/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin'"
+  - WIX_PATH: "'/c/Program Files (x86)/WiX Toolset v3.11/bin'"
+
+before_install:
+  - export PATH=$MSBUILD_PATH:${PATH}:${WIX_PATH}
+  
+install:
+  - powershell Install-WindowsFeature Net-Framework-Core;
+  - cinst -y --no-progress wixtoolset;
+  
 script:
-  - msbuild TestApp/TestApp.sln
+  - cmd.exe /C "dir"
+  - cmd.exe /C "MSBuild.exe TestApp/TestApp.sln"
