@@ -5,10 +5,9 @@ group: dev
 
 env:
   - MSBUILD_PATH: "'/c/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/MSBuild/15.0/Bin'"
-  - WIX_PATH: "'/c/Program Files (x86)/WiX Toolset v3.11/bin'"
 
 before_install:
-  - export PATH=$MSBUILD_PATH:${PATH}:${WIX_PATH}
+  - export PATH=$MSBUILD_PATH:${PATH}
   
 install:
   - powershell Install-WindowsFeature Net-Framework-Core;
