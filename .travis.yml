@@ -16,3 +16,12 @@ install:
 script:
   - cmd.exe /C "dir"
   - cmd.exe /C "MSBuild.exe TestApp/TestApp.sln"
+
+deploy:
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file_glob: true
+    file: "TestApp/TestInstaller/bin/*/*.msi"
+    skip_cleanup: true
+    on:
+      branch: master
